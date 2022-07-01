@@ -1,66 +1,132 @@
-PyAnsys Library Template
-########################
+PySeaScape Library
+==================
 
-This repository is a template repository where you can `Create a
-repository from a template`_ and create a new PyAnsys project that
-follows the guidelines specified in the `PyAnsys Developer's Guide`_.
-
-The following sections should be filled and documented for your project.
-
-.. _Create a repository from a template: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-.. _PyAnsys Developer's Guide: https://github.com/pyansys/about
+A pythonic remotable interface to RedhawkSC and TotemSC
 
 
-Project Overview
-----------------
-Provide a description of your PyAnsys Python library.
+How to install
+--------------
+
+At least two installation modes are provided: user and developer.
+
+For users
+^^^^^^^^^
+
+User installation can be performed by running:
+
+.. code:: bash
+
+    python -m pip install ansys-seascape
+
+For developers
+^^^^^^^^^^^^^^
+
+Installing PySeaScape Library in developer mode allows
+you to modify the source and enhance it.
+
+Before contributing to the project, please refer to the `PyAnsys Developer's guide`_. You will 
+need to follow these steps:
+
+1. Start by cloning this repository:
+
+    .. code:: bash
+
+        git clone https://github.com/pyansys/pyseascape
+
+2. Create a fresh-clean Python environment and activate it. Refer to the
+   official `venv`_ documentation if you require further information:
+
+    .. code:: bash
+
+        # Create a virtual environment
+        python -m venv .venv
+
+        # Activate it in a POSIX system
+        source .venv/bin/activate
+
+        # Activate it in Windows CMD environment
+        .venv\Scripts\activate.bat
+
+        # Activate it in Windows Powershell
+        .venv\Scripts\Activate.ps1
+
+3. Make sure you have the latest version of `pip`_:
+
+    .. code:: bash
+
+        python -m pip install -U pip
+
+4. Install the project in editable mode:
+
+    .. code:: bash
+    
+        python -m pip install --editable ansys-seascape-library
+
+5. Install additional requirements (if needed):
+
+     .. code:: bash
+
+        python -m pip install -r requirements/requirements_build.txt
+        python -m pip install -r requirements/requirements_doc.txt
+        python -m pip install -r requirements/requirements_tests.txt
+
+6. Finally, verify your development installation by running:
+
+    .. code:: bash
+        
+        python -m pip install -r requirements/requirements_tests.txt
+        pytest tests -v
 
 
-Installation
-------------
-Include installation directions.  Note that this README will be
-included in your PyPI package, so be sure to include ``pip``
-directions along with developer installation directions.  For example.
+Style and Testing
+-----------------
 
-Install <PyAnsys Library> with:
-
-.. code::
-
-   pip install ansys-<product/service>-<library>
-
-Alternatively, clone and install in development mode with:
-
-.. code::
-
-   git clone https://github.com/pyansys/
-   cd <PyAnsys-Library>
-   pip install -e .
+If required, you can always call the style commands (`black`_, `isort`_,
+`flake8`_...) or unit testing ones (`pytest`_) from the command line. However,
+this does not guarantee that your project is being tested in an isolated
+environment, which is another reason to consider using `tox`_.
 
 
 Documentation
 -------------
-Include a link to the full sphinx documentation.  For example `PyAnsys <https://docs.pyansys.com/>`_
+
+For building documentation, you can either run the usual rules provided in the
+`Sphinx`_ Makefile, such us:
+
+.. code:: bash
+
+    python -m pip install -r requirements/requirements_doc.txt
+    make -C doc/ html
+
+    # subsequently open the documentation with (under Linux):
+    your_browser_name doc/html/index.html
+
+Distributing
+------------
+
+If you would like to create either source or wheel files, start by installing
+the building requirements:
+
+.. code:: bash
+
+    python -m pip install -r requirements/requirements_build.txt
+
+Then, you can execute:
+
+    .. code:: bash
+
+        python -m build
+        python -m twine check dist/*
 
 
-Usage
------
-It's best to provide a sample code or even a figure demonstrating the usage of your library.  For example:
-
-.. code:: python
-
-   >>> from ansys.<product/service> import <library>
-   >>> my_object.<library>()
-   >>> my_object.foo()
-   'bar'
-
-
-Testing
--------
-You can feel free to include this at the README level or in CONTRIBUTING.md
-
-
-License
--------
-Be sure to point out your license (and any acknowledgments).  State
-that the full license can be found in the root directory of the
-repository.
+.. LINKS AND REFERENCES
+.. _black: https://github.com/psf/black
+.. _flake8: https://flake8.pycqa.org/en/latest/
+.. _isort: https://github.com/PyCQA/isort
+.. _PyAnsys Developer's guide: https://dev.docs.pyansys.com/
+.. _pre-commit: https://pre-commit.com/
+.. _pytest: https://docs.pytest.org/en/stable/
+.. _Sphinx: https://www.sphinx-doc.org/en/master/
+.. _pip: https://pypi.org/project/pip/
+.. _tox: https://tox.wiki/
+.. _venv: https://docs.python.org/3/library/venv.html

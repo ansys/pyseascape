@@ -1,123 +1,138 @@
-PySeaScape Library
+PySeascape Library
 ==================
 
-A pythonic remotable interface to RedhawkSC and TotemSC
+A pythonic remotable interface to RedhawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.
 
 
 How to install
 --------------
 
-At least two installation modes are provided: user and developer.
-
-For users
-^^^^^^^^^
+Install from PyPI
+^^^^^^^^^^^^^^^^^
 
 User installation can be performed by running:
 
 .. code:: bash
 
+    pip install ansys-seascape
+
+OR 
+
+.. code:: bash
+
     python -m pip install ansys-seascape
 
-For developers
-^^^^^^^^^^^^^^
+Install from latest Github source
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Fetch latest source from github:
 
-Installing PySeaScape Library in developer mode allows
-you to modify the source and enhance it.
+.. code:: bash
 
-Before contributing to the project, please refer to the `PyAnsys Developer's guide`_. You will 
-need to follow these steps:
+    cd <your-library-directory>
+    git clone https://github.com/pyansys/pyseascape.git
 
-1. Start by cloning this repository:
+(Optional) Create and enable virtual environment. Please refer to official `venv`_ documentation for more help regarding virtual environment setup.
 
-    .. code:: bash
-
-        git clone https://github.com/pyansys/pyseascape
-
-2. Create a fresh-clean Python environment and activate it. Refer to the
-   official `venv`_ documentation if you require further information:
-
-    .. code:: bash
-
-        # Create a virtual environment
-        python -m venv .venv
-
-        # Activate it in a POSIX system
-        source .venv/bin/activate
-
-        # Activate it in Windows CMD environment
-        .venv\Scripts\activate.bat
-
-        # Activate it in Windows Powershell
-        .venv\Scripts\Activate.ps1
-
-3. Make sure you have the latest version of `pip`_:
-
-    .. code:: bash
-
-        python -m pip install -U pip
-
-4. Install the project in editable mode:
-
-    .. code:: bash
+.. code:: bash
     
-        python -m pip install --editable ansys-seascape-library
+    # Create a virtual environment
+    python -m venv .venv
 
-5. Install additional requirements (if needed):
+    # Activate it in a POSIX system
+    source .venv/bin/activate
 
-     .. code:: bash
+    # Activate it in Windows CMD environment
+    .venv\Scripts\activate.bat
 
-        python -m pip install -r requirements/requirements_build.txt
-        python -m pip install -r requirements/requirements_doc.txt
-        python -m pip install -r requirements/requirements_tests.txt
+    # Activate it in Windows Powershell
+    .venv\Scripts\Activate.ps1
 
-6. Finally, verify your development installation by running:
+Run the setup script
 
-    .. code:: bash
-        
-        python -m pip install -r requirements/requirements_tests.txt
-        pytest tests -v
+.. code:: bash
+    
+    cd pyseascape
+    python setup.py install
 
+Usage
+-----
 
-Style and Testing
------------------
+*Note: Either a local installation or remote connection to licensed Redhawk-SC is required to use the pyseascape library. \
+This only offers a remotable frontend interface that can run directly in native Python on any machine.*
 
-If required, you can always call the style commands (`black`_, `isort`_,
-`flake8`_...) or unit testing ones (`pytest`_) from the command line. However,
-this does not guarantee that your project is being tested in an isolated
-environment, which is another reason to consider using `tox`_.
+Launching local Redhawk-SC in backend
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code:: python
+
+    from ansys.seascape import RedhawkSC
+    gp = RedhawkSC(executable=path_to_executable)
+
+OR
+
+.. code:: python
+
+    from ansys import seascape
+    gp = seascape.RedhawkSC(executable=path_to_executable)
+
+Connecting to remote Redhawk-SC session
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+    from ansys.seascape import RedhawkSC
+    gp = RedhawkSC(url=url_or_ip_to_redhawksc_server:port)
+
+All Redhawk-SC global functions can be called using prefix of RedhawkSC object name. Object methods can be called as normal.
+
+Running Redhawk-SC commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For example:
+
+.. code:: python
+
+    # If gp = RedhawkSC(...)
+    db = gp.open_db(db_name)  # Returns a SeascapeDB remotable object
+    db.create_design_view(...)
+
+    # Creating Redhawk-SC objects
+    inst = gp.Instance('Inst_Name')
+
+    # Redhawk-SC modules must also be prefixed by gp
+    # E.g. using voltage_impact module
+    gp.voltage_impact.helpers.get_pgimpact_histograms(...)
+
+Using TotemSC
+^^^^^^^^^^^^^
+
+Using TotemSC is same as RedhawkSC where user needs to import TotemSC instead of RedhawkSC.
+
+Accessing Redhawk-SC help
+-------------------------
+
+Redhawk-SC native help function supports command based as well as keyword based help.
+This help can be accessed remotely as well.
+
+.. code:: python
+
+    # If gp = RedhawkSC(...)
+    
+    # command based help
+    gp.help(command='gp.Scatter')
+
+    # keyword based help
+    gp.help(keyword='scatter')
+
+Known issues and limitations
+----------------------------
+
+Gui features have not yet been implemented. Hence, commands like open_console_window, open_scheduler_window etc. will not work yet. Commands like gp.scatter_plot will also not work as it requires drawing gui plots
 
 Documentation
 -------------
 
-For building documentation, you can either run the usual rules provided in the
-`Sphinx`_ Makefile, such us:
-
-.. code:: bash
-
-    python -m pip install -r requirements/requirements_doc.txt
-    make -C doc/ html
-
-    # subsequently open the documentation with (under Linux):
-    your_browser_name doc/html/index.html
-
-Distributing
-------------
-
-If you would like to create either source or wheel files, start by installing
-the building requirements:
-
-.. code:: bash
-
-    python -m pip install -r requirements/requirements_build.txt
-
-Then, you can execute:
-
-    .. code:: bash
-
-        python -m build
-        python -m twine check dist/*
-
+Please refer to Redhawk-SC Documentation.
 
 .. LINKS AND REFERENCES
 .. _black: https://github.com/psf/black

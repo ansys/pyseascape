@@ -115,7 +115,7 @@ class SCApp(object):
         self.product_name_ = self.__class__.__name__
         self.rh_process_ = None
         if url==None and executable==None:
-            raise ValueError("Either server URL or executable path must be specified")
+            raise ValueError("Either Redhawk-SC server URL or executable path must be specified")
         if url is not None:
             self.url_ = url
             self.check_connection()
@@ -177,6 +177,13 @@ class SCApp(object):
     def write_remote_tmp_file(self, data):
         return self.send_cmd(f'gp.write_remote_tmp_file({data!r})')
 
+    def help(self, command="", keyword=""):
+        if command and keyword:
+            ValueError("Only one of command or keyword can be specified.")
+        if command:
+            return self.send_cmd(f"help({command})")
+        else:
+            return self.send_cmd(f"help('{keyword}')")
 
 class ObjConverter(object):
     '''hierarchical json converter to objects like Instance, Pin, ...

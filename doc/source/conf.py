@@ -1,11 +1,11 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
 
-from ansys.seascape.library import __version__
+from ansys.seascape import __version__
 from pyansys_sphinx_theme import pyansys_logo_black
 
 # Project information
-project = "ansys-seascape-library"
+project = "ansys-seascape"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 release = version = __version__

@@ -3,4 +3,5 @@
    Provide any documentation specific to your online documentation
    here.
 
-.. include:: ../../README.rst
+.. include:: general/index.rst
+.. include:: ../../examples/README.rst

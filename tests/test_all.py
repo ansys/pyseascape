@@ -1,5 +1,6 @@
 import subprocess
 from typing import Tuple
+
 from ansys.seascape import RedhawkSC
 from ansys.seascape.scapp import (
     Instance,
@@ -16,14 +17,15 @@ from os.path import abspath, dirname, join
 from sys import exc_info
 import traceback
 import time
+import platform
 
 
 def launch_server() -> Tuple[str, int, subprocess.Popen]:
     import subprocess
 
     srv_path = join(dirname(abspath(__file__)), "test_utils", "rhsc_mockserver.py")
-    cmd = f"python {srv_path}"
-    print(cmd)
+    three_or_not = '' if platform.system() == 'Windows' else '3'
+    cmd = f"python{three_or_not} {srv_path}"
     proc_handle = subprocess.Popen(cmd, shell=True)
     time.sleep(1)
     with open("port.out", "r") as f:
@@ -56,12 +58,14 @@ def test_all():
             LayoutWindow,
             Launcher,
         ], "Failed to get options"
+        print('ALL PASS')
     except Exception as err:
         err_type, ex, tr = exc_info()
         print(ex)
         print(traceback.print_tb(tr))
     finally:
         proc_handle.kill()
+
 
 
 if __name__ == "__main__":

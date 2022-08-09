@@ -1,11 +1,11 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
 
-from ansys.seascape import __version__
+from ansys.seascape.library import __version__
 from pyansys_sphinx_theme import pyansys_logo_black
 
 # Project information
-project = "ansys-seascape"
+project = "ansys-seascape-library"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 release = version = __version__
@@ -14,11 +14,11 @@ release = version = __version__
 html_logo = pyansys_logo_black
 html_theme = "pyansys_sphinx_theme"
 
-html_short_title = html_title = "ansys-seascape"
+html_short_title = html_title = "ansys-seascape-library"
 
 # specify the location of your github repo
 html_theme_options = {
-    "github_url": "https://github.com/pyansys/pyseascape",
+    "github_url": "https://github.com/pyansys/pyseascape-library",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [
@@ -33,7 +33,6 @@ extensions = [
     "numpydoc",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
-    "sphinx.ext.imgconverter",
 ]
 
 # Intersphinx mapping

@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build documentation
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install ansys-seascape
+        run: pip install .
+
+      - name: Install documentation build requirements
+        run: pip install -r requirements/requirements_docs.txt
+
+      - name: Build Documentation
+        run: |
+          make -C doc html SPHINXOPTS="-j auto -W --keep-going"
+          touch doc/_build/html/.nojekyll
+          seascape.docs.pyansys.com > doc/_build/html/CNAME

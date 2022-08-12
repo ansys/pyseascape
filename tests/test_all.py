@@ -24,7 +24,7 @@ def launch_server() -> Tuple[str, int, subprocess.Popen]:
     import subprocess
 
     srv_path = join(dirname(abspath(__file__)), "test_utils", "rhsc_mockserver.py")
-    three_or_not = '' if platform.system() == 'Windows' else '3'
+    three_or_not = "" if platform.system() == "Windows" else "3"
     cmd = f"python{three_or_not} {srv_path}"
     proc_handle = subprocess.Popen(cmd, shell=True)
     time.sleep(1)
@@ -58,14 +58,13 @@ def test_all():
             LayoutWindow,
             Launcher,
         ], "Failed to get options"
-        print('ALL PASS')
+        print("ALL PASS")
     except Exception as err:
         err_type, ex, tr = exc_info()
         print(ex)
         print(traceback.print_tb(tr))
     finally:
         proc_handle.kill()
-
 
 
 if __name__ == "__main__":

@@ -67,7 +67,7 @@ jobs:
       - name: Upload wheel
         uses: actions/upload-artifact@v2
         with:
-          name: ansys-product-library-wheel
+          name: ansys-seascape-wheel
           path: dist/
           retention-days: 7
 
@@ -100,14 +100,14 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Documentation-html
-          path: doc/build/html
+          path: doc/_build/html
           retention-days: 7
 
       - name: Upload PDF Documentation
         uses: actions/upload-artifact@v2
         with:
           name: Documentation-pdf
-          path: doc/build/latex/*.pdf
+          path: doc/_build/latex/*.pdf
           retention-days: 7
 
   Release:
@@ -124,7 +124,7 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: ansys-product-library-wheel
+          name: ansys-seascape-wheel
 
       - uses: actions/download-artifact@v2
         with:

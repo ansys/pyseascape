@@ -71,7 +71,7 @@ jobs:
           path: dist/
           retention-days: 7
 
-  docs-style:
+  docs_style:
     name: Documentation Style Check
     runs-on: ubuntu-latest
     steps:
@@ -130,7 +130,7 @@ jobs:
 
   Release:
     if: contains(github.ref, 'refs/tags')
-    needs: [main, style, docs]
+    needs: [main, style, docs_style, docs_build]
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python

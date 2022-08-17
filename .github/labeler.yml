@@ -5,7 +5,7 @@ maintenance:
 - .github/**/*
 - .flake8
 - setup.py
-- setup-distutils.py
+- pyproject.toml
 dependencies:
 - requirements_build.txt
 - requirements_style.txt

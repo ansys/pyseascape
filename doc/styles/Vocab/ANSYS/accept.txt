@@ -8,3 +8,4 @@ Python
 GUI
 GitHub
 remotable
+venv

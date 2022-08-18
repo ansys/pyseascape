@@ -4,9 +4,6 @@ import requests
 
 import atexit
 
-# import time
-# from .utils import write_to_file, include
-
 
 class GpObject(object):
     def __init__(self, type, data):

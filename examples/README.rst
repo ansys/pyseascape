@@ -17,9 +17,9 @@ Example:
 
     from ansys.seascape.redhawk import RedhawkSC
 
-    execpath = <path-to-redhawk_sc-executable>
+    exe_path = <path-to-redhawk_sc-executable>
 
-    gp = RedhawkSC(executable=execpath)
+    gp = RedhawkSC(executable=exe_path)
 
 Connecting to remote Redhawk-SC application
 -------------------------------------------
@@ -32,9 +32,8 @@ Example:
 
     from ansys.seascape.redhawk import RedhawkSC
 
-    url = "http://<url-of-remote-explorer_sc-server>"
+    gp = RedhawkSC(url="http://<url-of-remote-explorer_sc-server>")
 
-    gp = RedhawkSC(url=url)
 
 Using Redhawk-SC commands and scripts in pyseascape environment
 ---------------------------------------------------------------

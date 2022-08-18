@@ -10,6 +10,9 @@ on:
     branches:
       - main
 
+env:
+  MAIN_PYTHON_VERSION: '3.9'
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -24,7 +27,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Install style requirements
         run: |
@@ -45,9 +48,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'requirements_*.txt'
+
 
       - name: Create wheel
         run: |
@@ -100,9 +106,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          cache: 'pip'
+          cache-dependency-path: 'requirements_*.txt'
 
       - name: Install library
         run: pip install .
@@ -138,9 +146,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - uses: actions/checkout@v2
 

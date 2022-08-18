@@ -77,9 +77,9 @@ Install additional requirements (if needed):
 
 .. code:: bash
 
-    python -m pip install -r requirements/requirements_build.txt
-    python -m pip install -r requirements/requirements_doc.txt
-    python -m pip install -r requirements/requirements_tests.txt
+    python -m pip install -r requirements_build.txt
+    python -m pip install -r requirements_doc.txt
+    python -m pip install -r requirements_tests.txt
 
 Usage
 -----

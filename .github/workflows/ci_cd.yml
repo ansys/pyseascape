@@ -10,6 +10,9 @@ on:
     branches:
       - main
 
+env:
+  MAIN_PYTHON_VERSION: '3.9'
+
 jobs:
   style:
     name: Style Check
@@ -20,7 +23,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: MAIN_PYTHON_VERSION
 
       - name: Install style requirements
         run: |
@@ -43,7 +46,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: MAIN_PYTHON_VERSION
 
       - name: Create wheel
         run: |
@@ -98,7 +101,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: MAIN_PYTHON_VERSION
 
       - name: Install library
         run: pip install .
@@ -136,7 +139,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: 3.9
+          python-version: MAIN_PYTHON_VERSION
 
       - uses: actions/checkout@v2
 

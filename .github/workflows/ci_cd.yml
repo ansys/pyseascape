@@ -71,7 +71,25 @@ jobs:
           path: dist/
           retention-days: 7
 
-  docs:
+  docs_style:
+    name: Documentation Style Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+  
+      - name: Running Vale
+        uses: errata-ai/vale-action@reviewdog
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          files: doc
+          reporter: github-pr-check
+          level: error
+          filter_mode: nofilter
+          fail_on_error: true
+          vale_flags: "--config=doc/.vale.ini"
+
+  docs_build:
     name: Build Documentation
     runs-on: ubuntu-latest
 
@@ -112,7 +130,7 @@ jobs:
 
   Release:
     if: contains(github.ref, 'refs/tags')
-    needs: [main, style, docs]
+    needs: [main, style, docs_style, docs_build]
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python

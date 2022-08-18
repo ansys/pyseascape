@@ -23,9 +23,9 @@ OR
 
     python -m pip install ansys-seascape
 
-Install from latest Github source
+Install from latest GitHub source
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Fetch latest source from github:
+Fetch latest source from GitHub:
 
 .. code:: bash
 
@@ -136,7 +136,7 @@ This help can be accessed remotely as well.
 Known issues and limitations
 ----------------------------
 
-GUI features have not yet been implemented. Hence, commands like open_console_window, open_scheduler_window etc. will not work yet. Commands like gp.scatter_plot will also not work as it requires drawing gui plots
+GUI features have not yet been implemented. Hence, commands like ``open_console_window``, ``open_scheduler_window`` etc. will not work yet. Commands like ``gp.scatter_plot will`` also not work as it requires drawing GUI plots.
 
 Documentation
 -------------

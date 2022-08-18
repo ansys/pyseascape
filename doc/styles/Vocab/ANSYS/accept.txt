@@ -1,0 +1,11 @@
+ANSYS
+Ansys
+ansys
+pyseascape
+PySeascape
+PyPI
+Python
+GUI
+GitHub
+remotable
+venv

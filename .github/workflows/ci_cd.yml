@@ -23,7 +23,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: MAIN_PYTHON_VERSION
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Install style requirements
         run: |
@@ -46,7 +46,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: MAIN_PYTHON_VERSION
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Create wheel
         run: |
@@ -101,7 +101,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
-          python-version: MAIN_PYTHON_VERSION
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - name: Install library
         run: pip install .
@@ -139,7 +139,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
-          python-version: MAIN_PYTHON_VERSION
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
       - uses: actions/checkout@v2
 

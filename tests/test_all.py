@@ -1,7 +1,7 @@
 import subprocess
 from typing import Tuple
 
-from ansys.seascape import RedhawkSC
+from ansys.seascape import RedHawkSC
 from ansys.seascape.scapp import (
     Instance,
     Launcher,
@@ -40,7 +40,7 @@ def test_all():
     address, port, proc_handle = launch_server()
     gp = None
     try:
-        gp = RedhawkSC(url=f"http://{address}:{port}/")
+        gp = RedHawkSC(url=f"http://{address}:{port}/")
         db = gp.open_db("testpath")
         assert type(db) == SeaScapeDB, "Failed to open db"
         opts = gp.get_options()

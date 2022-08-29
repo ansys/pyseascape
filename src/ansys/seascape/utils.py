@@ -67,6 +67,15 @@ def _include_impl(file_name, gg=None, ll=None):
 
 
 def include(file_name):
+    """
+    Include and evaluate given script
+
+    Parameters
+    ----------
+    file_name: str
+        File name of the script to evaluate
+    """
+
     # ll = inspect.stack()[1].frame.f_locals ## injecting to local
     # is useless because of locals() optimization in py3
     gg = inspect.stack()[1].frame.f_globals
@@ -74,6 +83,19 @@ def include(file_name):
 
 
 def write_to_file(file_name, *args, **kwargs):
+    """
+    Write given args and kwargs into specified file.
+
+    Parameters
+    ----------
+    file_name: str
+        Name of the file to be written
+    args: iterable
+        zero or more parameters that will be written to file, each on new line.
+    kwargs: dict
+        zero or more `key = value` pairs that will be written to file, each on new line.
+
+    """
     ff = open(file_name, "w")
     for x in args:
         ff.write(f"{x}\n")

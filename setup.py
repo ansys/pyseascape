@@ -18,7 +18,7 @@ setup(
     ],
     license="MIT",
     license_file="LICENSE",
-    description="A pythonic remotable interface to RedhawkSC and TotemSC",
+    description="A pythonic remotable interface to RedHawkSC and TotemSC",
     long_description=open("README.rst").read(),
     install_requires=["importlib-metadata >=4.0"],
     python_requires=">=3.7",

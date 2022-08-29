@@ -15,21 +15,37 @@ class GpObject(object):
 
 
 class Instance(GpObject):
+    """
+    Provides remotable proxy to Instance class in RedHawk-SC.
+    """
+
     def __init__(self, data):
         super(Instance, self).__init__("Instance", data)
 
 
 class Pin(GpObject):
+    """
+    Provides remotable proxy to Pin class in RedHawk-SC.
+    """
+
     def __init__(self, data):
         super(Pin, self).__init__("Pin", data)
 
 
 class Net(GpObject):
+    """
+    Provides remotable proxy to Net class in RedHawk-SC.
+    """
+
     def __init__(self, data):
         super(Net, self).__init__("Net", data)
 
 
 class Layer(GpObject):
+    """
+    Provides remotable proxy to Layer class in RedHawk-SC.
+    """
+
     def __init__(self, data):
         super(Layer, self).__init__("Layer", data)
 
@@ -48,6 +64,10 @@ class Remotable(object):
 
 
 class View(Remotable):
+    """
+    Provides remotable proxy to all View type classes in RedHawk-SC.
+    """
+
     def __init__(self, manager, db_name, view_name, view_type):
         self.view_type_ = view_type
         super(View, self).__init__(
@@ -56,11 +76,19 @@ class View(Remotable):
 
 
 class SeaScapeDB(Remotable):
+    """
+    Provides remotable proxy to SeascapeDB class in RedHawk-SC.
+    """
+
     def __init__(self, manager, db_name):
         super(SeaScapeDB, self).__init__(manager, f'SeaScapeDB("{db_name}")')
 
 
 class LayoutWindow(Remotable):
+    """
+    Provides handler to LayoutWindow in RedHawk-SC.
+    """
+
     def __init__(self, manager, gui_name):
         super(LayoutWindow, self).__init__(
             manager, f'LayoutWindow.get_handler("{gui_name}")'
@@ -68,6 +96,10 @@ class LayoutWindow(Remotable):
 
 
 class Launcher(Remotable):
+    """
+    Provides remotable proxy to job launcher in RedHawk-SC.
+    """
+
     def __init__(self, manager, launcher_name):
         super(Launcher, self).__init__(
             manager, f'gp.LauncherRep.find_launcher("{launcher_name}")'
@@ -95,6 +127,10 @@ class OptionsBase(dict):
 
 
 class OptionsBundle(dict):
+    """
+    Provides pythonic representation to options passed to most views during their creation.
+    """
+
     def __init__(self, opts):
         super(OptionsBundle, self).__init__(**opts)
 
@@ -144,7 +180,7 @@ class SCApp(object):
         self.rh_process_ = None
         if url == None and executable == None:
             raise ValueError(
-                "Either Redhawk-SC server URL or executable path must be specified"
+                "Either RedHawk-SC server URL or executable path must be specified"
             )
         if url is not None:
             self.url_ = url

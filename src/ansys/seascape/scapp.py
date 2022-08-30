@@ -160,7 +160,8 @@ class ModuleStoredCall(object):
 
 
 class SCAppModule(object):
-    # this class is to support util function calls that are passed into view creation
+    """Supports util function calls that are passed into view creation."""
+
     def __init__(self, name, manager):
         self.name_ = name
         self.manager_ = manager

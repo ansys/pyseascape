@@ -180,7 +180,7 @@ class SCApp(object):
         self.rh_process_ = None
         if url == None and executable == None:
             raise ValueError(
-                "Either RedHawk-SC server URL or executable path must be specified"
+                "Either RedHawk-SC server URL or executable path must be specified."
             )
         if url is not None:
             self.url_ = url

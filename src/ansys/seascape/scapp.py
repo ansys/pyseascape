@@ -244,7 +244,6 @@ class SCApp(object):
         if self.rh_process_ is None and local_only:
             return
         try:
-            # print('terminate', self.url_)
             requests.get(f"{self.url_}/kill")
         except requests.exceptions.ConnectionError:
             # rhsc side needs to be fixed so that we don't get this exception

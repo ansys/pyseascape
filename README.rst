@@ -20,7 +20,7 @@ PySeascape Library
    :target: https://github.com/psf/black
    :alt: Black
 
-A pythonic remotable interface to RedhawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.
+A pythonic remotable interface to RedHawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.
 
 
 How to install
@@ -84,66 +84,62 @@ Install additional requirements (if needed):
 Usage
 -----
 
-*Note: Either a local installation or remote connection to licensed Redhawk-SC is required to use the pyseascape library. \
+*Note: Either a local installation or remote connection to licensed RedHawk-SC is required to use the pyseascape library. \
 This only offers a remotable frontend interface that can run directly in native Python on any machine.*
 
-Launching local Redhawk-SC in backend
+Launching local RedHawk-SC in backend
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
-    from ansys.seascape import RedhawkSC
-    gp = RedhawkSC(executable=path_to_executable)
+    from ansys.seascape import RedHawkSC
+    gp = RedHawkSC(executable=path_to_executable)
 
 OR
 
 .. code:: python
 
     from ansys import seascape
-    gp = seascape.RedhawkSC(executable=path_to_executable)
+    gp = seascape.RedHawkSC(executable=path_to_executable)
 
-Connecting to remote Redhawk-SC session
+Connecting to remote RedHawk-SC session
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: python
 
-    from ansys.seascape import RedhawkSC
-    gp = RedhawkSC(url=url_or_ip_to_redhawksc_server:port)
+    from ansys.seascape import RedHawkSC
+    gp = RedHawkSC(url=url_or_ip_to_redhawksc_server:port)
 
-All Redhawk-SC global functions can be called using prefix of RedhawkSC object name. Object methods can be called as normal.
+All RedHawk-SC global functions can be called using prefix of RedHawkSC object name. Object methods can be called as normal.
 
-Running Redhawk-SC commands
+Running RedHawk-SC commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For example:
 
 .. code:: python
 
-    # If gp = RedhawkSC(...)
+    # If gp = RedHawkSC(...)
     db = gp.open_db(db_name)  # Returns a SeascapeDB remotable object
     db.create_design_view(...)
 
-    # Creating Redhawk-SC objects
+    # Creating RedHawk-SC objects
     inst = gp.Instance('Inst_Name')
 
-    # Redhawk-SC modules must also be prefixed by gp
+    # RedHawk-SC modules must also be prefixed by gp
     # E.g. using voltage_impact module
     gp.voltage_impact.helpers.get_pgimpact_histograms(...)
 
-Using TotemSC
-^^^^^^^^^^^^^
 
-Using TotemSC is same as RedhawkSC where user needs to import TotemSC instead of RedhawkSC.
-
-Accessing Redhawk-SC help
+Accessing RedHawk-SC help
 -------------------------
 
-Redhawk-SC native help function supports command based as well as keyword based help.
+RedHawk-SC native help function supports command based as well as keyword based help.
 This help can be accessed remotely as well.
 
 .. code:: python
 
-    # If gp = RedhawkSC(...)
+    # If gp = RedHawkSC(...)
     
     # command based help
     gp.help(command='gp.Scatter')
@@ -159,7 +155,7 @@ GUI features have not yet been implemented. Hence, commands like open_console_wi
 Documentation
 -------------
 
-Please refer to Redhawk-SC Documentation.
+Please refer to RedHawk-SC Documentation.
 
 .. LINKS AND REFERENCES
 .. _black: https://github.com/psf/black

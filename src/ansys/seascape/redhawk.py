@@ -1,9 +1,10 @@
-from . scapp import SCApp
+from .scapp import SCApp
 
 
-# RedhawkSC is same as SCApp for now but can be specialized later
-class RedhawkSC(SCApp):
-    pass
+# RedHawkSC is same as SCApp for now but can be specialized later
+class RedHawkSC(SCApp):
+    """
+    A proxy class to handle the connection to RedHawk-SC installation
+    """
 
-class SiwaveSC(SCApp):
     pass

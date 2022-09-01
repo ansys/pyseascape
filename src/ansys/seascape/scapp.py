@@ -160,7 +160,8 @@ class ModuleStoredCall(object):
 
 
 class SCAppModule(object):
-    # this class is to support util function calls that are passed into view creation
+    """Supports util function calls that are passed into view creation."""
+
     def __init__(self, name, manager):
         self.name_ = name
         self.manager_ = manager
@@ -180,7 +181,7 @@ class SCApp(object):
         self.rh_process_ = None
         if url == None and executable == None:
             raise ValueError(
-                "Either RedHawk-SC server URL or executable path must be specified"
+                "Either RedHawk-SC server URL or executable path must be specified."
             )
         if url is not None:
             self.url_ = url
@@ -244,7 +245,6 @@ class SCApp(object):
         if self.rh_process_ is None and local_only:
             return
         try:
-            # print('terminate', self.url_)
             requests.get(f"{self.url_}/kill")
         except requests.exceptions.ConnectionError:
             # rhsc side needs to be fixed so that we don't get this exception

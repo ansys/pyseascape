@@ -150,6 +150,13 @@ jobs:
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
+      - name: Get Bot Application Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v1
+        with:
+          application_id: ${{ secrets.BOT_APPLICATION_ID }}
+          application_private_key: ${{ secrets.BOT_APPLICATION_PRIVATE_KEY }}
+
       - uses: actions/checkout@v2
 
       - uses: actions/download-artifact@v2
@@ -172,9 +179,12 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          BRANCH: gh-pages
-          FOLDER: ~/html
-          CLEAN: true
+          repository-name: pyansys/pyseascape-docs
+          token: ${{ steps.get_workflow_token.outputs.token }}
+          branch: gh-pages
+          folder: ~/html
+          clean: true
+          single-commit: true
 
       # note how we use the PyPI tokens
       - name: Upload to Azure PyPi (disabled)

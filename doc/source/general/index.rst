@@ -112,11 +112,6 @@ For example:
     # E.g. using voltage_impact module
     gp.voltage_impact.helpers.get_pgimpact_histograms(...)
 
-Using TotemSC
-^^^^^^^^^^^^^
-
-Using TotemSC is same as RedHawkSC where user needs to import TotemSC instead of RedHawkSC.
-
 Accessing RedHawk-SC help
 -------------------------
 

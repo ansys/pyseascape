@@ -187,13 +187,13 @@ jobs:
           single-commit: true
 
       # note how we use the PyPI tokens
-      - name: Upload to Azure PyPi (disabled)
+      - name: Upload to TestPyPi #(disabled)
         run: |
           pip install twine
-          # twine upload --skip-existing ./**/*.whl
+          twine upload --repository testpypi --skip-existing ./**/*.whl
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
 
       - name: Release
         uses: softprops/action-gh-release@v1

@@ -161,16 +161,16 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: ansys-seascape-wheel
+          name: ansys-seascape-wheel # Downloads to working dir
 
       - uses: actions/download-artifact@v2
         with:
-          name: Documentation-pdf
+          name: Documentation-pdf # Downloads to working dir
 
       - uses: actions/download-artifact@v2
         with:
           name: Documentation-html
-          path: ~/html
+          path: ./html # Change path to more accessible location
 
       # list current directory
       - name: List directory structure
@@ -182,7 +182,7 @@ jobs:
           repository-name: pyansys/pyseascape-docs
           token: ${{ steps.get_workflow_token.outputs.token }}
           branch: gh-pages
-          folder: ~/html
+          folder: ./html
           clean: true
           single-commit: true
 
@@ -190,7 +190,7 @@ jobs:
       - name: Upload to TestPyPi #(disabled)
         run: |
           pip install twine
-          twine upload --repository testpypi --skip-existing ./**/*.whl
+          twine upload --repository testpypi --skip-existing ./*.whl
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
@@ -199,6 +199,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ./**/*.whl
-            ./**/*.zip
-            ./**/*.pdf
+            ./*.whl
+            ./*.zip
+            ./*.pdf

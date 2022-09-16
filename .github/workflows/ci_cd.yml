@@ -66,7 +66,7 @@ jobs:
           twine check dist/*
 
       - name: Install library
-        run: pip install dist/*
+        run: pip install dist/*.whl
 
       - name: Unit testing
         run: |

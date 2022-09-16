@@ -8,8 +8,12 @@ PySeascape Library
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |pypi| image:: https://img.shields.io/pypi/v/ansys-fluent-core.svg?logo=python&logoColor=white
-   :target: https://pypi.org/project/ansys-fluent-core
+.. |build| image:: https://img.shields.io/github/workflow/status/pyansys/pyseascape/GitHub CI?style=flat
+   :target: https://github.com/pyansys/pyseascape/actions?query=workflow:"GitHub CI"
+   :alt:
+
+.. |pypi| image:: https://img.shields.io/pypi/v/ansys-seascape.svg?logo=python&logoColor=white
+   :target: https://pypi.org/project/ansys-seascape
    :alt: PyPI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg

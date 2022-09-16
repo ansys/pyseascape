@@ -57,8 +57,8 @@ jobs:
 
       - name: Create wheel
         run: |
-          pip install wheel
-          python setup.py bdist_wheel
+          pip install build
+          python -m build
 
       - name: Validate wheel
         run: |
@@ -66,7 +66,7 @@ jobs:
           twine check dist/*
 
       - name: Install library
-        run: pip install dist/*
+        run: pip install dist/*.whl
 
       - name: Unit testing
         run: |

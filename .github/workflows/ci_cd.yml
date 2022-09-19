@@ -189,16 +189,15 @@ jobs:
           clean: true
           single-commit: true
 
-      # note how we use the PyPI tokens
-      - name: Upload to TestPyPi #(disabled)
+      - name: Upload to PyPi
         run: |
           pip install twine
-          twine upload --repository testpypi --skip-existing ./*.whl
+          twine upload --skip-existing ./*.whl
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TESTPYPI_API_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
 
-      - name: Release
+      - name: Github Release
         uses: softprops/action-gh-release@v1
         with:
           files: |

@@ -172,6 +172,9 @@ jobs:
           name: Documentation-html
           path: ./html # Change path to more accessible location
 
+      - name: Zip HTML for upload
+        run: zip -r docs-html.zip html
+
       # list current directory
       - name: List directory structure
         run: ls -R

@@ -4,7 +4,7 @@ from setuptools import find_namespace_packages, setup
 
 setup(
     name="ansys-seascape",
-    version="0.1.dev0",
+    version="0.1.0",
     url="https://github.com/pyansys/pyseascape",
     author="ANSYS, Inc.",
     author_email="pyansys.support@ansys.com",

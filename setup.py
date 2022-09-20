@@ -20,7 +20,7 @@ setup(
     license_file="LICENSE",
     description="A pythonic remotable interface to RedHawkSC and TotemSC",
     long_description=open("README.rst").read(),
-    install_requires=["importlib-metadata >=4.0"],
+    install_requires=["importlib-metadata >=4.0", "requests"],
     python_requires=">=3.7",
     packages=find_namespace_packages(where="src", include="ansys*"),
     package_dir={"": "src"},

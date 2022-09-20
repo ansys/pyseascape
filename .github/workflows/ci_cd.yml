@@ -119,6 +119,7 @@ jobs:
         run: |
           pip install -r requirements_docs.txt
           make -C doc html SPHINXOPTS="-W"
+          touch doc/_build/html/.nojekyll
 
       - name: Build PDF Documentation
         run: |

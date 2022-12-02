@@ -8,8 +8,8 @@ PySeascape Library
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |python| image:: https://img.shields.io/pypi/pyversions/ansys-seascape?logo=pypi
-   :target: https://pypi.org/project/ansys-seascape/
+.. |PythonVersion| image:: https://img.shields.io/badge/python-3.7+-blue.svg
+   :target: https://www.python.org/downloads/
    :alt: Python
 
 .. |build| image:: https://img.shields.io/github/workflow/status/pyansys/pyseascape/GitHub%20CI?style=flat

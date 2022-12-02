@@ -48,12 +48,12 @@ Fetch latest source from GitHub:
     # Activate it in Windows Powershell
     .venv\Scripts\Activate.ps1
 
-Run the setup script
+Install the project
 
 .. code:: bash
     
     cd pyseascape
-    python setup.py install
+    pip install .
 
 Install additional requirements (if needed):
 

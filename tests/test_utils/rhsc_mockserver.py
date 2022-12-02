@@ -1,7 +1,7 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
-from urllib import parse
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from typing import Any
+from urllib import parse
 
 from ansys.seascape.scapp import LayoutWindow
 
@@ -100,9 +100,7 @@ class RHSC_Mock:
         ]
 
     def get_options():
-        return OptionsBundle(
-            {"option1": "value1", "option2": "value2", "option3": "value3"}
-        )
+        return OptionsBundle({"option1": "value1", "option2": "value2", "option3": "value3"})
 
 
 class CustomEncoder(json.JSONEncoder):
@@ -131,18 +129,12 @@ class RHSC_MockServer(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
         if self.path == "/kill":
-            self.wfile.write(
-                bytes("<html><head><title>Mock RHSC server</title></head>", "utf-8")
-            )
-            self.wfile.write(
-                bytes("<body><p>Server Closed successfully.</p></body>", "utf-8")
-            )
+            self.wfile.write(bytes("<html><head><title>Mock RHSC server</title></head>", "utf-8"))
+            self.wfile.write(bytes("<body><p>Server Closed successfully.</p></body>", "utf-8"))
             self.wfile.write(bytes("</html>", "utf-8"))
             self.server._BaseServer__shutdown_request = True
         else:
-            self.wfile.write(
-                bytes("<html><head><title>Mock RHSC server</title></head>", "utf-8")
-            )
+            self.wfile.write(bytes("<html><head><title>Mock RHSC server</title></head>", "utf-8"))
             self.wfile.write(bytes("<body>", "utf-8"))
             self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
             self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
@@ -153,7 +145,7 @@ class RHSC_MockServer(BaseHTTPRequestHandler):
         post_data = self.rfile.read(content_length).decode("utf-8")
         pargs = parse.parse_qs(post_data)
         cmd = pargs.get("command")[0] if pargs.get("command") else "None"
-        self.log_message(f"Recieved command: {cmd}")
+        self.log_message(f"Received command: {cmd}")
         if cmd == "None":
             out = eval(cmd)  # '"null"'
         else:

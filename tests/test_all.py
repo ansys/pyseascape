@@ -1,4 +1,9 @@
+from os.path import abspath, dirname, join
+import platform
 import subprocess
+from sys import exc_info
+import time
+import traceback
 from typing import Tuple
 
 from ansys.seascape import RedHawkSC
@@ -13,11 +18,6 @@ from ansys.seascape.scapp import (
     SeaScapeDB,
     View,
 )
-from os.path import abspath, dirname, join
-from sys import exc_info
-import traceback
-import time
-import platform
 
 
 def launch_server() -> Tuple[str, int, subprocess.Popen]:

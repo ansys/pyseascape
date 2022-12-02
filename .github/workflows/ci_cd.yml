@@ -93,8 +93,8 @@ jobs:
     steps:
     - name: Run Ansys documentation building action
       uses: pyansys/actions/doc-build@v1
-        with:
-          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+      with:
+        python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
   package:
     name: Package library

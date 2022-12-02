@@ -12,6 +12,9 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.9'
+  PACKAGE_NAME: 'ansys-seascape'
+  PACKAGE_NAMESPACE: 'ansys.seascape'
+  DOCUMENTATION_CNAME: 'seascape.docs.pyansys.com'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -19,189 +22,130 @@ concurrency:
 
 jobs:
   style:
-    name: Style Check
+    name: Code style
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - name: PyAnsys code style checks
+        uses: pyansys/actions/code-style@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-      - name: Install style requirements
-        run: |
-          pip install -r requirements_style.txt --disable-pip-version-check
-
-      - name: Codespell
-        run: |
-          make codespell
-
-      - name: flake8
-        run: |
-          make flake8
-
-  main:
-    name: Build and Testing
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.MAIN_PYTHON_VERSION }}
-          cache: 'pip'
-          cache-dependency-path: 'requirements_*.txt'
-
-
-      - name: Create wheel
-        run: |
-          pip install build
-          python -m build
-
-      - name: Validate wheel
-        run: |
-          pip install twine
-          twine check dist/*
-
-      - name: Install library
-        run: pip install dist/*.whl
-
-      - name: Unit testing
-        run: |
-          pip install -r requirements_test.txt
-          cd tests  # so we're testing the install, not local
-          pytest -vx
-
-      - name: Upload wheel
-        uses: actions/upload-artifact@v2
-        with:
-          name: ansys-seascape-wheel
-          path: dist/
-          retention-days: 7
-
-  docs_style:
+  docs-style:
     name: Documentation Style Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-  
-      - name: Running Vale
-        uses: errata-ai/vale-action@reviewdog
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: PyAnsys documentation style checks
+        uses: pyansys/actions/doc-style@v1
         with:
-          files: doc
-          reporter: github-pr-check
-          level: error
-          filter_mode: nofilter
-          fail_on_error: true
-          vale_flags: "--config=doc/.vale.ini"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-  docs_build:
-    name: Build Documentation
-    runs-on: ubuntu-latest
-
+  smoke-tests:
+    name: Build and smoke tests
+    runs-on: ${{ matrix.os }}
+    needs: [style]
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10']
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Build wheelhouse and perform smoke test
+        uses: pyansys/actions/build-wheelhouse@v1
+        with:
+          library-name: ${{ env.PACKAGE_NAME }}
+          library-namespace: ${{ env.PACKAGE_NAMESPACE }}
+          operating-system: ${{ matrix.os }}
+          python-version: ${{ matrix.python-version }}
+
+  macos-build:
+    name: Build and smoke tests (macOS)
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    runs-on: macos-latest
+    needs: [style]
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+    steps:
+      - name: Build wheelhouse and perform smoke test
+        uses: pyansys/actions/build-wheelhouse@v1
+        with:
+          library-name: ${{ env.PACKAGE_NAME }}
+          library-namespace: ${{ env.PACKAGE_NAMESPACE }}
+          operating-system: ${{ runner.os }}
+          python-version: ${{ matrix.python-version }}
+
+  testing:
+    name: Testing
+    needs: [smoke-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Ansys pytest action
+        uses: pyansys/actions/tests-pytest@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
-          cache: 'pip'
-          cache-dependency-path: 'requirements_*.txt'
+          pytest-markers: "-xv"
 
-      - name: Install library
-        run: pip install .
-
-      - name: Build HTML
-        run: |
-          pip install -r requirements_docs.txt
-          make -C doc html SPHINXOPTS="-W"
-          touch doc/_build/html/.nojekyll
-
-      - name: Build PDF Documentation
-        run: |
-          sudo apt update
-          sudo apt-get install -y texlive-latex-extra latexmk
-          make -C doc latexpdf
-
-      - name: Upload HTML Documentation
-        uses: actions/upload-artifact@v2
-        with:
-          name: Documentation-html
-          path: doc/_build/html
-          retention-days: 7
-
-      - name: Upload PDF Documentation
-        uses: actions/upload-artifact@v2
-        with:
-          name: Documentation-pdf
-          path: doc/_build/latex/*.pdf
-          retention-days: 7
-
-  Release:
-    if: contains(github.ref, 'refs/tags')
-    needs: [main, style, docs_style, docs_build]
+  docs:
+    name: Build documentation
+    needs: [docs-style]
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
+    - name: Run Ansys documentation building action
+      uses: pyansys/actions/doc-build@v1
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-      - name: Get Bot Application Token
-        id: get_workflow_token
-        uses: peter-murray/workflow-application-token-action@v1
+  package:
+    name: Package library
+    needs: [testing, docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build library source and wheel artifacts
+        uses: pyansys/actions/build-library@v1
         with:
-          application_id: ${{ secrets.BOT_APPLICATION_ID }}
-          application_private_key: ${{ secrets.BOT_APPLICATION_PRIVATE_KEY }}
+          library-name: ${{ env.PACKAGE_NAME }}
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-      - uses: actions/checkout@v2
-
-      - uses: actions/download-artifact@v2
+  release:
+    name: Release project
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [package, macos-build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release to the public PyPI repository
+        uses: pyansys/actions/release-pypi-public@v1
         with:
-          name: ansys-seascape-wheel # Downloads to working dir
+          library-name: ${{ env.PACKAGE_NAME }}
+          twine-username: "__token__"
+          twine-token: ${{ secrets.PYPI_TOKEN }}
 
-      - uses: actions/download-artifact@v2
+      - name: Release to GitHub
+        uses: pyansys/actions/release-github@v1
         with:
-          name: Documentation-pdf # Downloads to working dir
+          library-name: ${{ env.PACKAGE_NAME }}
 
-      - uses: actions/download-artifact@v2
+  upload_dev_docs:
+    name: Upload dev documentation
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    needs: [package]
+    steps:
+      - name: Deploy the latest documentation
+        uses: pyansys/actions/doc-deploy-dev@v1
         with:
-          name: Documentation-html
-          path: ./html # Change path to more accessible location
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Zip HTML for upload
-        run: zip -r docs-html.zip html
-
-      # list current directory
-      - name: List directory structure
-        run: ls -R
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+  upload_docs_release:
+    name: Upload release documentation
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    runs-on: ubuntu-latest
+    needs: [release]
+    steps:
+      - name: Deploy the stable documentation
+        uses: pyansys/actions/doc-deploy-stable@v1
         with:
-          repository-name: pyansys/pyseascape-docs
-          token: ${{ steps.get_workflow_token.outputs.token }}
-          branch: gh-pages
-          folder: ./html
-          clean: true
-          single-commit: true
-
-      - name: Upload to PyPi
-        run: |
-          pip install twine
-          twine upload --skip-existing ./*.whl
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
-
-      - name: Github Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            ./*.whl
-            ./*.zip
-            ./*.pdf
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}

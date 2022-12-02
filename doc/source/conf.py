@@ -1,7 +1,8 @@
 """Sphinx documentation configuration file."""
 from datetime import datetime
+import os
 
-from pyansys_sphinx_theme import pyansys_logo_black
+from ansys_sphinx_theme import ansys_favicon, get_version_match, pyansys_logo_black
 
 from ansys.seascape import __version__
 
@@ -10,18 +11,32 @@ project = "ansys-seascape"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 release = version = __version__
+cname = os.getenv("DOCUMENTATION_CNAME", default="nocname.com")
 
 # use the default pyansys logo
 html_logo = pyansys_logo_black
-html_theme = "pyansys_sphinx_theme"
-
+html_theme = "ansys_sphinx_theme"
+html_favicon = ansys_favicon
 html_short_title = html_title = "ansys-seascape"
 
 # specify the location of your github repo
+html_context = {
+    "github_user": "pyansys",
+    "github_repo": "pyseascape",
+    "github_version": "main",
+    "doc_path": "doc/source",
+}
 html_theme_options = {
+    "switcher": {
+        "json_url": f"https://{cname}/release/versions.json",
+        "version_match": get_version_match(__version__),
+    },
+    "navbar_end": ["version-switcher", "theme-switcher", "navbar-icon-links"],
     "github_url": "https://github.com/pyansys/pyseascape",
     "show_prev_next": False,
     "show_breadcrumbs": True,
+    "collapse_navigation": True,
+    "use_edit_page_button": True,
     "additional_breadcrumbs": [
         ("PyAnsys", "https://docs.pyansys.com/"),
     ],

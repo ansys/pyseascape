@@ -4,10 +4,7 @@ documentation:
 maintenance:
 - .github/**/*
 - .flake8
-- setup.py
+- .pre-commit-config.yaml
 - pyproject.toml
 dependencies:
-- requirements_build.txt
-- requirements_style.txt
-- requirements_docs.txt
-- requirements_test.txt
+- pyproject.toml

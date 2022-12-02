@@ -1,8 +1,8 @@
+import atexit
 import json
 import re
-import requests
 
-import atexit
+import requests
 
 
 class GpObject(object):
@@ -70,9 +70,7 @@ class View(Remotable):
 
     def __init__(self, manager, db_name, view_name, view_type):
         self.view_type_ = view_type
-        super(View, self).__init__(
-            manager, f'SeaScapeDB("{db_name}").get("{view_name}")'
-        )
+        super(View, self).__init__(manager, f'SeaScapeDB("{db_name}").get("{view_name}")')
 
 
 class SeaScapeDB(Remotable):
@@ -90,9 +88,7 @@ class LayoutWindow(Remotable):
     """
 
     def __init__(self, manager, gui_name):
-        super(LayoutWindow, self).__init__(
-            manager, f'LayoutWindow.get_handler("{gui_name}")'
-        )
+        super(LayoutWindow, self).__init__(manager, f'LayoutWindow.get_handler("{gui_name}")')
 
 
 class Launcher(Remotable):
@@ -101,9 +97,7 @@ class Launcher(Remotable):
     """
 
     def __init__(self, manager, launcher_name):
-        super(Launcher, self).__init__(
-            manager, f'gp.LauncherRep.find_launcher("{launcher_name}")'
-        )
+        super(Launcher, self).__init__(manager, f'gp.LauncherRep.find_launcher("{launcher_name}")')
 
 
 class XTExtractTweaks(object):
@@ -174,15 +168,11 @@ class SCAppModule(object):
 
 
 class SCApp(object):
-    def __init__(
-        self, url=None, executable=None, executable_work_dir="gp_rr", debug_remote=False
-    ):
+    def __init__(self, url=None, executable=None, executable_work_dir="gp_rr", debug_remote=False):
         self.product_name_ = self.__class__.__name__
         self.rh_process_ = None
         if url == None and executable == None:
-            raise ValueError(
-                "Either RedHawk-SC server URL or executable path must be specified."
-            )
+            raise ValueError("Either RedHawk-SC server URL or executable path must be specified.")
         if url is not None:
             self.url_ = url
             self.check_connection()
@@ -234,9 +224,7 @@ class SCApp(object):
                 self.url_, data={"command": cmd, "return": has_return, "delayed": False}
             )
             if d.status_code == 666:
-                raise ValueError(
-                    f"Reply from {self.product_name_}: {d.text} for command {cmd}"
-                )
+                raise ValueError(f"Reply from {self.product_name_}: {d.text} for command {cmd}")
         except requests.exceptions.ConnectionError:
             raise ValueError(f"Connection to {self.url_} not successful") from None
         return json.loads(d.text, cls=MyDecoder, manager=self)

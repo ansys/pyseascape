@@ -26,9 +26,7 @@ def source_file(fn, gg, ll):
         sss = _file_to_string(fn)
         exec(sss, gg, ll)
     except:
-        print(
-            f"ERROR sourcing file {fn}, {sys.exc_info()[0].__name__}, {sys.exc_info()[1]}"
-        )
+        print(f"ERROR sourcing file {fn}, {sys.exc_info()[0].__name__}, {sys.exc_info()[1]}")
         raise
 
 
@@ -48,9 +46,7 @@ def _include_impl(file_name, gg=None, ll=None):
         extra_help = ""
     file_name = fix_abspath(file_name)
     _include_file_stack.append(file_name)
-    _include_path_stack.append(
-        os.path.abspath(os.path.dirname(os.path.expanduser(file_name)))
-    )
+    _include_path_stack.append(os.path.abspath(os.path.dirname(os.path.expanduser(file_name))))
     file_name = fix_abspath(file_name)
 
     stack = inspect.stack()

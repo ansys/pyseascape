@@ -12,6 +12,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: '3.9'
+  DOCUMENTATION_CNAME: "seascape.docs.pyansys.com"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -149,7 +150,7 @@ jobs:
       - name: Deploy the stable documentation
         uses: pyansys/actions/doc-deploy-stable@v1
         with:
-          cname: seascape.docs.pyansys.com
+          cname: ${{ env.DOCUMENTATION_CNAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 

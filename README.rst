@@ -12,8 +12,8 @@ PySeascape Library
    :target: https://pypi.org/project/ansys-seascape/
    :alt: Python
 
-.. |build| image:: https://img.shields.io/github/workflow/status/pyansys/pyseascape/GitHub%20CI?style=flat
-   :target: https://github.com/pyansys/pyseascape/actions?query=workflow:"GitHub%20CI"
+.. |build| image:: https://img.shields.io/github/actions/workflow/status/pyansys/pyseascape/ci_cd.yml?branch=main&style=flat
+   :target: https://github.com/pyansys/pyseascape/actions/workflows/ci_cd.yml?query=workflow%3A%22GitHub+CI%22
    :alt: Build
 
 .. |pypi| image:: https://img.shields.io/pypi/v/ansys-seascape.svg?logo=python&logoColor=fff

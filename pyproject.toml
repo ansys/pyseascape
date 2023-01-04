@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "ansys-seascape"
-version = "0.2.dev0"
+version = "0.3.dev0"
 description = "A pythonic remotable interface to RedHawkSC and TotemSC"
 readme = "README.rst"
 requires-python = ">=3.7,<4"

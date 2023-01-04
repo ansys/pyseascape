@@ -104,6 +104,7 @@ Launching local RedHawk-SC in backend
 .. code:: python
 
     from ansys.seascape import RedHawkSC
+
     gp = RedHawkSC(executable=path_to_executable)
 
 OR
@@ -111,6 +112,7 @@ OR
 .. code:: python
 
     from ansys import seascape
+
     gp = seascape.RedHawkSC(executable=path_to_executable)
 
 Connecting to remote RedHawk-SC session
@@ -119,7 +121,9 @@ Connecting to remote RedHawk-SC session
 .. code:: python
 
     from ansys.seascape import RedHawkSC
-    gp = RedHawkSC(url=url_or_ip_to_redhawksc_server:port)
+
+    url_and_port = url_or_ip_to_redhawksc_server + ":" + port
+    gp = RedHawkSC(url=url_and_port)
 
 All RedHawk-SC global functions can be called using prefix of RedHawkSC object name. Object methods can be called as normal.
 
@@ -135,7 +139,7 @@ For example:
     db.create_design_view(...)
 
     # Creating RedHawk-SC objects
-    inst = gp.Instance('Inst_Name')
+    inst = gp.Instance("Inst_Name")
 
     # RedHawk-SC modules must also be prefixed by gp
     # E.g. using voltage_impact module
@@ -151,12 +155,12 @@ This help can be accessed remotely as well.
 .. code:: python
 
     # If gp = RedHawkSC(...)
-    
+
     # command based help
-    gp.help(command='gp.Scatter')
+    gp.help(command="gp.Scatter")
 
     # keyword based help
-    gp.help(keyword='scatter')
+    gp.help(keyword="scatter")
 
 Known issues and limitations
 ----------------------------

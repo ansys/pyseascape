@@ -5,3 +5,10 @@
 
 .. include:: general/index.rst
 .. include:: ../../examples/README.rst
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
+   Contributing

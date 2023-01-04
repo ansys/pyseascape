@@ -32,7 +32,7 @@ page to submit questions, report bugs, and request new features.
 To reach the support team, email `pyansys.support@ansys.com <pyansys.support@ansys.com>`_.
 
 View PySeascape documentation
--------------------------
+-----------------------------
 Documentation for the latest stable release of PySeascape is hosted at
 `PySeascape Documentation <https://seascape.docs.pyansys.com>`_.  
 

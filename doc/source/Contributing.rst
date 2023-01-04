@@ -1,4 +1,4 @@
-.. _contributing_aedt:
+.. _contributing_seascape:
 
 ==========
 Contribute

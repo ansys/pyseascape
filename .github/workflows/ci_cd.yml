@@ -11,7 +11,7 @@ on:
       - main
 
 env:
-  MAIN_PYTHON_VERSION: '3.9'
+  MAIN_PYTHON_VERSION: '3.10'
   PACKAGE_NAME: 'ansys-seascape'
   PACKAGE_NAMESPACE: 'ansys.seascape'
   DOCUMENTATION_CNAME: 'seascape.docs.pyansys.com'

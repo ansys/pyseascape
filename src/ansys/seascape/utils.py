@@ -95,6 +95,6 @@ def write_to_file(file_name, *args, **kwargs):
     ff = open(file_name, "w")
     for x in args:
         ff.write(f"{x}\n")
-    for (x, y) in kwargs.items():
+    for x, y in kwargs.items():
         ff.write(f"{x} = {y}\n")
     ff.close()

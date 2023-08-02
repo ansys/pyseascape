@@ -37,7 +37,7 @@ Documentation for the latest stable release of PySeascape is hosted at
 `PySeascape Documentation <https://seascape.docs.pyansys.com>`_.  
 
 Documentation for the latest development version, which tracks the
-``main`` branch, is hosted at  `Development PySeascape Documentation <https://seascape.docs.pyansys.com/dev/>`_.
+``main`` branch, is hosted at  `Development PySeascape Documentation <https://seascape.docs.pyansys.com/version/dev/>`_.
 This version is automatically kept up to date via GitHub actions.
 
 Adhere to code style

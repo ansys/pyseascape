@@ -19,14 +19,14 @@ development mode, run:
 
 .. code::
 
-    git clone https://github.com/pyansys/pyseascape
+    git clone https://github.com/ansys/pyseascape
     cd pyseascape
     python -m pip install --upgrade pip
     pip install -e .
 
 Post issues
 -----------
-Use the `PySeascape Issues <https://github.com/pyansys/pyseascape/issues>`_
+Use the `PySeascape Issues <https://github.com/ansys/pyseascape/issues>`_
 page to submit questions, report bugs, and request new features.
 
 To reach the support team, email `pyansys.support@ansys.com <pyansys.support@ansys.com>`_.

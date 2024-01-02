@@ -30,7 +30,7 @@ Fetch latest source from GitHub:
 .. code:: bash
 
     cd <your-library-directory>
-    git clone https://github.com/pyansys/pyseascape.git
+    git clone https://github.com/ansys/pyseascape.git
 
 (Optional) Create and enable virtual environment. Please refer to official `venv`_ documentation for more help regarding virtual environment setup.
 

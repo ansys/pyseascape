@@ -9,3 +9,4 @@ GUI
 GitHub
 remotable
 venv
+RedHawk-SC

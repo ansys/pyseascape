@@ -1,5 +1,5 @@
 ******************
-PySeascape Library
+PySeascape library
 ******************
 
 |pyansys| |python| |pypi| |GH-CI| |build| |MIT| |black|

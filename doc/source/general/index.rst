@@ -1,5 +1,5 @@
 ******************
-PySeascape Library
+PySeascape library
 ******************
 
 A pythonic remotable interface to RedHawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.

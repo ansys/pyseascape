@@ -8,7 +8,6 @@ from ansys_sphinx_theme import (
     ansys_logo_white_cropped,
     get_version_match,
     latex,
-    pyansys_logo_black,
     watermark,
 )
 from sphinx.builders.latex import LaTeXBuilder
@@ -24,8 +23,7 @@ author = "ANSYS, Inc."
 release = version = __version__
 cname = os.getenv("DOCUMENTATION_CNAME", default="nocname.com")
 
-# use the default pyansys logo
-html_logo = pyansys_logo_black
+# use the default theme
 html_theme = "ansys_sphinx_theme"
 html_favicon = ansys_favicon
 html_short_title = html_title = "ansys-seascape"

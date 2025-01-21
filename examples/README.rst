@@ -46,6 +46,7 @@ For example:
     It is recommended to use gp as name for RedHawkSC object as it makes the script compatible 
     with almost direct execution on native RedHawk-SC application locally as well.
     """
+
     gp = RedHawkSC(...)
     db = gp.open_db("<path-to-db>")
 

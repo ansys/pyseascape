@@ -1,0 +1,219 @@
+[
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#pyseascape-library",
+        "title": "PySeascape library",
+        "section": "PySeascape library",
+        "text": "A pythonic remotable interface to RedHawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.\nPySeascape library"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#how-to-install",
+        "title": "PySeascape library > How to install",
+        "section": "How to install",
+        "text": "How to install"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#install-from-pypi",
+        "title": "PySeascape library > Install from PyPI",
+        "section": "Install from PyPI",
+        "text": "User installation can be performed by running:\nOR\nInstall from PyPI"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#install-from-latest-github-source",
+        "title": "PySeascape library > Install from latest GitHub source",
+        "section": "Install from latest GitHub source",
+        "text": "Fetch latest source from GitHub:\n(Optional) Create and enable virtual environment. Please refer to official venv documentation for more help regarding virtual environment setup.\nInstall the project\nInstall additional requirements (if needed):\nInstall from latest GitHub source"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#usage",
+        "title": "PySeascape library > Usage",
+        "section": "Usage",
+        "text": "Note: Either a local installation or remote connection to licensed RedHawk-SC is required to use the pyseascape library. This only offers a remotable frontend interface that can run directly in native Python on any machine.\nUsage"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#launching-local-redhawk-sc-in-backend",
+        "title": "PySeascape library > Launching local RedHawk-SC in backend",
+        "section": "Launching local RedHawk-SC in backend",
+        "text": "OR\nLaunching local RedHawk-SC in backend"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#connecting-to-remote-redhawk-sc-session",
+        "title": "PySeascape library > Connecting to remote RedHawk-SC session",
+        "section": "Connecting to remote RedHawk-SC session",
+        "text": "All RedHawk-SC global functions can be called using prefix of RedHawkSC object name. Object methods can be called as normal.\nConnecting to remote RedHawk-SC session"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#running-redhawk-sc-commands",
+        "title": "PySeascape library > Running RedHawk-SC commands",
+        "section": "Running RedHawk-SC commands",
+        "text": "For example:\nRunning RedHawk-SC commands"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#accessing-redhawk-sc-help",
+        "title": "PySeascape library > Accessing RedHawk-SC help",
+        "section": "Accessing RedHawk-SC help",
+        "text": "RedHawk-SC native help function supports command based as well as keyword based help.\nThis help can be accessed remotely as well.\nAccessing RedHawk-SC help"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#known-issues-and-limitations",
+        "title": "PySeascape library > Known issues and limitations",
+        "section": "Known issues and limitations",
+        "text": "GUI features have not yet been implemented. Hence, commands like open_console_window, open_scheduler_window etc. do not work yet. Commands like gp.scatter_plot also does not work as it requires drawing GUI plots.\nKnown issues and limitations\nopen_console_window\nopen_scheduler_window\ngp.scatter_plot"
+    },
+    {
+        "objectID": "general/index",
+        "href": "general/index.html#documentation",
+        "title": "PySeascape library > Documentation",
+        "section": "Documentation",
+        "text": "Please refer to RedHawk-SC Documentation.\nDocumentation"
+    },
+    {
+        "objectID": "Contributing",
+        "href": "Contributing.html#contribute",
+        "title": "Contribute",
+        "section": "Contribute",
+        "text": "Overall guidance on contributing to a PyAnsys repository appears in\nContribute\nin the PyAnsys Developer’s Guide. Ensure that you are thoroughly familiar\nwith this guide, paying particular attention to Guidelines and Best Practices, before attempting\nto contribute to PySeascape.\nThe following contribution information is specific to PySeascape.\nContribute"
+    },
+    {
+        "objectID": "Contributing",
+        "href": "Contributing.html#clone-the-repository",
+        "title": "Contribute > Clone the repository",
+        "section": "Clone the repository",
+        "text": "To clone and install the latest version of PySeascape in\ndevelopment mode, run:\nClone the repository"
+    },
+    {
+        "objectID": "Contributing",
+        "href": "Contributing.html#post-issues",
+        "title": "Contribute > Post issues",
+        "section": "Post issues",
+        "text": "Use the PySeascape Issues\npage to submit questions, report bugs, and request new features.\nTo reach the support team, email pyansys.support@ansys.com.\nPost issues"
+    },
+    {
+        "objectID": "Contributing",
+        "href": "Contributing.html#view-pyseascape-documentation",
+        "title": "Contribute > View PySeascape documentation",
+        "section": "View PySeascape documentation",
+        "text": "Documentation for the latest stable release of PySeascape is hosted at\nPySeascape Documentation.\nDocumentation for the latest development version, which tracks the\nmain branch, is hosted at  Development PySeascape Documentation.\nThis version is automatically kept up to date via GitHub actions.\nView PySeascape documentation\nmain"
+    },
+    {
+        "objectID": "Contributing",
+        "href": "Contributing.html#adhere-to-code-style",
+        "title": "Contribute > Adhere to code style",
+        "section": "Adhere to code style",
+        "text": "PySeascape is compliant with PyAnsys code style. It uses the tool\npre-commit to check the code style. You can install\nand activate this tool with:\nYou can also install this as a pre-commit hook with:\nThis way, it’s not possible for you to push code that fails the style checks.\nFor example:\nAdhere to code style"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#pyseascape-library",
+        "title": "PySeascape library",
+        "section": "PySeascape library",
+        "text": "A pythonic remotable interface to RedHawkSC and TotemSC that allows integration with other PyAnsys and Python libraries.\nPySeascape library"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#how-to-install",
+        "title": "PySeascape library > How to install",
+        "section": "How to install",
+        "text": "How to install"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#install-from-pypi",
+        "title": "PySeascape library > Install from PyPI",
+        "section": "Install from PyPI",
+        "text": "User installation can be performed by running:\nOR\nInstall from PyPI"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#install-from-latest-github-source",
+        "title": "PySeascape library > Install from latest GitHub source",
+        "section": "Install from latest GitHub source",
+        "text": "Fetch latest source from GitHub:\n(Optional) Create and enable virtual environment. Please refer to official venv documentation for more help regarding virtual environment setup.\nInstall the project\nInstall additional requirements (if needed):\nInstall from latest GitHub source"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#usage",
+        "title": "PySeascape library > Usage",
+        "section": "Usage",
+        "text": "Note: Either a local installation or remote connection to licensed RedHawk-SC is required to use the pyseascape library. This only offers a remotable frontend interface that can run directly in native Python on any machine.\nUsage"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#launching-local-redhawk-sc-in-backend",
+        "title": "PySeascape library > Launching local RedHawk-SC in backend",
+        "section": "Launching local RedHawk-SC in backend",
+        "text": "OR\nLaunching local RedHawk-SC in backend"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#connecting-to-remote-redhawk-sc-session",
+        "title": "PySeascape library > Connecting to remote RedHawk-SC session",
+        "section": "Connecting to remote RedHawk-SC session",
+        "text": "All RedHawk-SC global functions can be called using prefix of RedHawkSC object name. Object methods can be called as normal.\nConnecting to remote RedHawk-SC session"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#running-redhawk-sc-commands",
+        "title": "PySeascape library > Running RedHawk-SC commands",
+        "section": "Running RedHawk-SC commands",
+        "text": "For example:\nRunning RedHawk-SC commands"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#accessing-redhawk-sc-help",
+        "title": "PySeascape library > Accessing RedHawk-SC help",
+        "section": "Accessing RedHawk-SC help",
+        "text": "RedHawk-SC native help function supports command based as well as keyword based help.\nThis help can be accessed remotely as well.\nAccessing RedHawk-SC help"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#known-issues-and-limitations",
+        "title": "PySeascape library > Known issues and limitations",
+        "section": "Known issues and limitations",
+        "text": "GUI features have not yet been implemented. Hence, commands like open_console_window, open_scheduler_window etc. do not work yet. Commands like gp.scatter_plot also does not work as it requires drawing GUI plots.\nKnown issues and limitations\nopen_console_window\nopen_scheduler_window\ngp.scatter_plot"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#documentation",
+        "title": "PySeascape library > Documentation",
+        "section": "Documentation",
+        "text": "Please refer to RedHawk-SC Documentation.\nDocumentation"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#examples",
+        "title": "PySeascape library > Examples",
+        "section": "Examples",
+        "text": "PySeascape can be used with local installation of RedHawk-SC or with a remote RedHawk-SC with running explorer_sc web service\nPySeascape offers RedHawkSC (class) frontend client to connect to the RedHawk-SC (application) backend server\nExamples"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#connecting-to-local-redhawk-sc-application",
+        "title": "PySeascape library > Connecting to local RedHawk-SC application",
+        "section": "Connecting to local RedHawk-SC application",
+        "text": "If a local RedHawk-SC application exists, RedHawkSC can launch and connect to the application provided the executable path is provided.\nExample:\nConnecting to local RedHawk-SC application"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#connecting-to-remote-redhawk-sc-application",
+        "title": "PySeascape library > Connecting to remote RedHawk-SC application",
+        "section": "Connecting to remote RedHawk-SC application",
+        "text": "In case of remote RedHawk-SC application, both RedHawk-SC application and explorer_sc server must be running. RedHawkSC can connect to the application using provided url to the explorer_sc server.\nExample:\nConnecting to remote RedHawk-SC application"
+    },
+    {
+        "objectID": "index",
+        "href": "index.html#using-redhawk-sc-commands-and-scripts-in-pyseascape-environment",
+        "title": "PySeascape library > Using RedHawk-SC commands and scripts in pyseascape environment",
+        "section": "Using RedHawk-SC commands and scripts in pyseascape environment",
+        "text": "All RedHawk-SC commands and scripts can be used in PySeascape-Python environment with minimal or no changes. All RedHawk-SC function calls must be prefixed with name of RedHawkSC object.\nFor example:\nUsing RedHawk-SC commands and scripts in pyseascape environment"
+    }
+]

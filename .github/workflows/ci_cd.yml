@@ -13,7 +13,6 @@ on:
 env:
   MAIN_PYTHON_VERSION: '3.12'
   PACKAGE_NAME: 'ansys-seascape'
-  PACKAGE_NAMESPACE: 'ansys.seascape'
   DOCUMENTATION_CNAME: 'seascape.docs.pyansys.com'
 
 concurrency:

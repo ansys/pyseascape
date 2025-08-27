@@ -35,6 +35,9 @@ html_context = {
     "github_repo": "pyseascape",
     "github_version": "main",
     "doc_path": "doc/source",
+    "pyansys_tags": [
+        "Semiconductors"
+    ]
 }
 html_theme_options = {
     "logo": "pyansys",

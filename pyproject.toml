@@ -8,35 +8,35 @@ version = "0.3.dev0"
 description = "A pythonic remotable interface to RedHawkSC and TotemSC"
 readme = "README.rst"
 requires-python = ">=3.10,<4"
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{name = "ANSYS, Inc.", email = "pyansys.support@ansys.com"}]
 maintainers = [{name = "Abhishek Kale", email = "abhishek.kale@ansys.com"}]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Information Analysis",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.13"
 ]
 
 dependencies = [
-    "requests>=2.23",
+    "requests>=2.23"
 ]
 
 [project.optional-dependencies]
 tests = [
     "pytest==9.0.2",
-    "pytest-cov==7.0.0",
+    "pytest-cov==7.0.0"
 ]
 doc = [
     "ansys-sphinx-theme==1.7.0",
     "numpydoc==1.10.0",
     "Sphinx==8.1.3",
-    "sphinx-copybutton==0.5.2",
+    "sphinx-copybutton==0.5.2"
 ]
 
 [project.urls]

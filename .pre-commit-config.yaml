@@ -13,7 +13,7 @@ repos:
     - black==24.10.0
 
 - repo: https://github.com/pycqa/isort
-  rev: 9.0.0a3
+  rev: 9.0.0b1
   hooks:
   - id: isort
 
@@ -23,7 +23,7 @@ repos:
   - id: flake8
 
 - repo: https://github.com/codespell-project/codespell
-  rev: v2.4.2
+  rev: v2.4.3
   hooks:
   - id: codespell
     args: ["-L Synopsys,synopsys"]
@@ -35,7 +35,7 @@ repos:
   - id: debug-statements
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.37.3
+  rev: 0.37.4
   hooks:
   - id: check-github-workflows
 

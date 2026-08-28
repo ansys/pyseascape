@@ -1,3 +1,8 @@
+.. warning::
+
+   This library is deprecated; it will no longer be maintained and will not receive further updates.
+
+
 ******************
 PySeascape library
 ******************

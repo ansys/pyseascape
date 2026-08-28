@@ -20,10 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# from . scapp import package, bqm_current, deco
+import warnings
+
 from .redhawk import RedHawkSC
 from .utils import include, write_to_file
 
-# from . scapp import package, bqm_current, deco
-
+warnings.warn(
+    "This library is deprecated; it will no longer be maintained and will not receive further updates.",
+    DeprecationWarning,
+)
 
 __version__ = "0.3.dev0"

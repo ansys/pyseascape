@@ -28,7 +28,7 @@ from .utils import include, write_to_file
 
 warnings.warn(
     "This library is deprecated; it will no longer be maintained and will not receive further updates.",
-    UserWarning,
+    FutureWarning,
 )
 
 __version__ = "0.3.dev0"

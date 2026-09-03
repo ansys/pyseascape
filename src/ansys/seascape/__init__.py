@@ -31,4 +31,4 @@ warnings.warn(
     DeprecationWarning,
 )
 
-__version__ = "0.3.dev0"
+__version__ = "0.2.1"

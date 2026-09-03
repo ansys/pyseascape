@@ -17,9 +17,7 @@ Example:
 
     from ansys.seascape.redhawk import RedHawkSC
 
-    exe_path = <path-to-redhawk_sc-executable>
-
-    gp = RedHawkSC(executable=exe_path)
+    gp = RedHawkSC(executable=path_to_redhawk_sc_executable)
 
 Connecting to remote RedHawk-SC application
 -------------------------------------------
@@ -48,8 +46,9 @@ For example:
     It is recommended to use gp as name for RedHawkSC object as it makes the script compatible 
     with almost direct execution on native RedHawk-SC application locally as well.
     """
+
     gp = RedHawkSC(...)
     db = gp.open_db("<path-to-db>")
 
-    # to call create_design_view on host  
+    # to call create_design_view on host
     db.create_design_view()

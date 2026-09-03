@@ -1,4 +1,5 @@
 """Sphinx documentation configuration file."""
+
 from datetime import datetime
 import os
 
@@ -8,7 +9,6 @@ from ansys_sphinx_theme import (
     ansys_logo_white_cropped,
     get_version_match,
     latex,
-    pyansys_logo_black,
     watermark,
 )
 from sphinx.builders.latex import LaTeXBuilder
@@ -24,8 +24,7 @@ author = "ANSYS, Inc."
 release = version = __version__
 cname = os.getenv("DOCUMENTATION_CNAME", default="nocname.com")
 
-# use the default pyansys logo
-html_logo = pyansys_logo_black
+# use the default theme
 html_theme = "ansys_sphinx_theme"
 html_favicon = ansys_favicon
 html_short_title = html_title = "ansys-seascape"
@@ -36,14 +35,16 @@ html_context = {
     "github_repo": "pyseascape",
     "github_version": "main",
     "doc_path": "doc/source",
+    "pyansys_tags": ["Semiconductors"],
 }
 html_theme_options = {
+    "logo": "pyansys",
     "switcher": {
-        "json_url": f"https://{cname}/release/versions.json",
+        "json_url": f"https://{cname}/versions.json",
         "version_match": get_version_match(__version__),
     },
     "navbar_end": ["version-switcher", "theme-switcher", "navbar-icon-links"],
-    "github_url": "https://github.com/pyansys/pyseascape",
+    "github_url": "https://github.com/ansys/pyseascape",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "collapse_navigation": True,

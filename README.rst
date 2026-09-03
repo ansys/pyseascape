@@ -1,6 +1,12 @@
 ******************
-PySeascape Library
+PySeascape library
 ******************
+
+⚠️ Warning
+-----------
+
+This library is deprecated; it will no longer be maintained and will not receive further updates.
+
 
 |pyansys| |python| |pypi| |GH-CI| |build| |MIT| |black|
 
@@ -12,16 +18,16 @@ PySeascape Library
    :target: https://pypi.org/project/ansys-seascape/
    :alt: Python
 
-.. |build| image:: https://img.shields.io/github/workflow/status/pyansys/pyseascape/GitHub%20CI?style=flat
-   :target: https://github.com/pyansys/pyseascape/actions?query=workflow:"GitHub%20CI"
+.. |build| image:: https://img.shields.io/github/actions/workflow/status/ansys/pyseascape/ci_cd.yml?branch=main&style=flat
+   :target: https://github.com/ansys/pyseascape/actions/workflows/ci_cd.yml?query=workflow%3A%22GitHub+CI%22
    :alt: Build
 
 .. |pypi| image:: https://img.shields.io/pypi/v/ansys-seascape.svg?logo=python&logoColor=fff
    :target: https://pypi.org/project/ansys-seascape
    :alt: PyPI
 
-.. |GH-CI| image:: https://github.com/pyansys/pyseascape/actions/workflows/ci_cd.yml/badge.svg
-   :target: https://github.com/pyansys/pyseascape/actions/workflows/ci_cd.yml
+.. |GH-CI| image:: https://github.com/ansys/pyseascape/actions/workflows/ci_cd.yml/badge.svg
+   :target: https://github.com/ansys/pyseascape/actions/workflows/ci_cd.yml
    :alt: GH-CI
 
 .. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
@@ -60,7 +66,7 @@ Fetch latest source from github:
 .. code:: bash
 
     cd <your-library-directory>
-    git clone https://github.com/pyansys/pyseascape.git
+    git clone https://github.com/ansys/pyseascape.git
 
 (Optional) Create and enable virtual environment. Please refer to official `venv`_ documentation for more help regarding virtual environment setup.
 
@@ -104,6 +110,7 @@ Launching local RedHawk-SC in backend
 .. code:: python
 
     from ansys.seascape import RedHawkSC
+
     gp = RedHawkSC(executable=path_to_executable)
 
 OR
@@ -111,6 +118,7 @@ OR
 .. code:: python
 
     from ansys import seascape
+
     gp = seascape.RedHawkSC(executable=path_to_executable)
 
 Connecting to remote RedHawk-SC session
@@ -119,7 +127,9 @@ Connecting to remote RedHawk-SC session
 .. code:: python
 
     from ansys.seascape import RedHawkSC
-    gp = RedHawkSC(url=url_or_ip_to_redhawksc_server:port)
+
+    url_and_port = url_or_ip_to_redhawksc_server + ":" + port
+    gp = RedHawkSC(url=url_and_port)
 
 All RedHawk-SC global functions can be called using prefix of RedHawkSC object name. Object methods can be called as normal.
 
@@ -135,7 +145,7 @@ For example:
     db.create_design_view(...)
 
     # Creating RedHawk-SC objects
-    inst = gp.Instance('Inst_Name')
+    inst = gp.Instance("Inst_Name")
 
     # RedHawk-SC modules must also be prefixed by gp
     # E.g. using voltage_impact module
@@ -151,12 +161,12 @@ This help can be accessed remotely as well.
 .. code:: python
 
     # If gp = RedHawkSC(...)
-    
+
     # command based help
-    gp.help(command='gp.Scatter')
+    gp.help(command="gp.Scatter")
 
     # keyword based help
-    gp.help(keyword='scatter')
+    gp.help(keyword="scatter")
 
 Known issues and limitations
 ----------------------------
